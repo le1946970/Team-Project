@@ -137,7 +137,7 @@ namespace Team_Project
                         filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
                     }
                 }
-
+                //  Close file
                 inputFile.Close();
             }
             catch (Exception ex)
