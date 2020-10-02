@@ -46,7 +46,7 @@ namespace Team_Project
                 //Create a delimiter array
                 char[] delim = { ',' };
 
-                //Open the PhoneList file
+                //Open the Files.txt file
                 inputFile = File.OpenText("Files.txt");
 
                 //Read the lines from the file
@@ -58,10 +58,12 @@ namespace Team_Project
                     //Tokenize the line
                     string[] tokens = line.Split(delim);
 
+                    //  Check if the first tokenized string contains "Audio"
                     if (tokens[0] == "Audio")
                     {
                         currentAudio = new Audio();
 
+                        //  Tokenized variables are numbered and parsed
                         currentAudio.Name = tokens[1];
                         currentAudio.Type = tokens[2];
                         currentAudio.Size = decimal.Parse(tokens[3]);
@@ -70,13 +72,19 @@ namespace Team_Project
                         currentAudio.BitRate = int.Parse(tokens[6]);
 
                         numAudio += 1;
+
+                        //  Add field to created list
                         audioList.Add(currentAudio);
+
+                        //  Send the following fields to the targeted ListBox
                         filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
                     }
+                    //  Check if the first tokenized string contains "Image"
                     else if (tokens[0] == "Image")
                     {
                         currentImage = new Image();
 
+                        //  Tokenized variables are numbered and parsed
                         currentImage.Name = tokens[1];
                         currentImage.Type = tokens[2];
                         currentImage.Size = decimal.Parse(tokens[3]);
@@ -86,13 +94,20 @@ namespace Team_Project
                         currentImage.Resolution = double.Parse(tokens[7]);
 
                         numImage += 1;
+
+                        //  Add field to created list
                         imageList.Add(currentImage);
+
+                        //  Send the following fields to the targeted ListBox
                         filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
                     }
+
+                    //  Check if the first tokenized string contains "Media"
                     else if (tokens[0] == "Media")
                     {
                         currentMedia = new Media();
 
+                        //  Tokenized variables are numbered and parsed
                         currentMedia.Name = tokens[1];
                         currentMedia.Type = tokens[2];
                         currentMedia.Size = decimal.Parse(tokens[3]);
@@ -102,13 +117,20 @@ namespace Team_Project
                         currentMedia.Rating = tokens[7];
 
                         numMedia += 1;
+
+                        //  Add field to created list
                         mediaList.Add(currentMedia);
+
+                        //  Send the following fields to the targeted ListBox
                         filesListBox.Items.Add(currentMedia.Name + ", " + currentMedia.Type + ", " + currentMedia.Size + ", " + currentMedia.LastModification);
                     }
+
+                    //  Check if the first tokenized string contains "Media"
                     else if (tokens[0] == "Document")
                     {
                         currentDocument = new Document();
 
+                        //  Tokenized variables are numbered and parsed
                         currentDocument.Name = tokens[1];
                         currentDocument.Type = tokens[2];
                         currentDocument.Size = decimal.Parse(tokens[3]);
@@ -118,13 +140,20 @@ namespace Team_Project
                         currentDocument.DocSubject = tokens[7];
 
                         numDocument += 1;
+
+                        //  Add field to created list
                         documentList.Add(currentDocument);
+
+                        //  Send the following fields to the targeted ListBox
                         filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
                     }
+
+                    //  Check if the first tokenized string contains "Video"
                     else if (tokens[0] == "Video")
                     {
                         currentVideo = new Video();
 
+                        //  Tokenized variables are numbered and parsed
                         currentVideo.Name = tokens[1];
                         currentVideo.Type = tokens[2];
                         currentVideo.Size = decimal.Parse(tokens[3]);
@@ -133,7 +162,11 @@ namespace Team_Project
                         currentVideo.Producer = tokens[6];
 
                         numVideo += 1;
+
+                        //  Add field to created list
                         videoList.Add(currentVideo);
+
+                        //  Send the following fields to the targeted ListBox
                         filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
                     }
                 }
@@ -148,11 +181,16 @@ namespace Team_Project
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //  Call method ReadFile when the form loads
             ReadFile();
 
+            //  Field numFIles is equivalent to its many attributes
             numFiles = (numAudio + numImage + numMedia + numDocument + numVideo);
+
+            //  Declare TextBox location for the field numFiles
             numberFilesTextBox.Text = numFiles.ToString();
 
+            //  Add ListBox items for the following string and its field
             numberFilesTypeListBox.Items.Add("Audio: " + numAudio);
             numberFilesTypeListBox.Items.Add("Image: " + numImage);
             numberFilesTypeListBox.Items.Add("Media: " + numMedia);
