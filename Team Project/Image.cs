@@ -12,10 +12,10 @@ namespace Team_Project
         {
             Width = 0;
             Height = 0;
-            Resolution = 0;
+            Resolution = "";
         }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
-        public double Resolution { get; set; }
+        public string Resolution { get; set; }
     }
 }
