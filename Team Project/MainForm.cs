@@ -121,7 +121,7 @@ namespace Team_Project
                         filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
                     }
                 }
-
+                //  Close file
                 inputFile.Close();
             }
             catch (Exception ex)
