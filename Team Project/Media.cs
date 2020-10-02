@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Media
+    class Media : Files
     {
-        public Media()
+        public Media() : base()
         {
             Title = "";
             Length = 0;

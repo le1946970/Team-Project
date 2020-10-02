@@ -56,10 +56,14 @@ namespace Team_Project
                     {
                         currentAudio = new Audio();
 
-                        currentAudio.Artist = tokens[1];
-                        currentAudio.BitRate = int.Parse(tokens[2]);
+                        currentAudio.Name = tokens[1];
+                        currentAudio.Type = tokens[2];
+                        currentAudio.Size = decimal.Parse(tokens[3]);
+                        currentAudio.LastModification = int.Parse(tokens[4]);
+                        currentAudio.Artist = tokens[5];
+                        currentAudio.BitRate = int.Parse(tokens[6]);
 
-                        filesListBox.Items.Add(currentAudio.Artist + ", " + currentAudio.BitRate);
+                        filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
                     }
                     else if (tokens[0] == "EndOfAudio")
                     {
@@ -69,11 +73,15 @@ namespace Team_Project
                     {
                         currentImage = new Image();
 
-                        currentImage.Width = decimal.Parse(tokens[1]);
-                        currentImage.Height = decimal.Parse(tokens[2]);
-                        currentImage.Resolution = double.Parse(tokens[2]);
+                        currentImage.Name = tokens[1];
+                        currentImage.Type = tokens[2];
+                        currentImage.Size = decimal.Parse(tokens[3]);
+                        currentImage.LastModification = int.Parse(tokens[4]);
+                        currentImage.Width = decimal.Parse(tokens[5]);
+                        currentImage.Height = decimal.Parse(tokens[6]);
+                        currentImage.Resolution = double.Parse(tokens[7]);
 
-                        filesListBox.Items.Add(currentImage.Width + ", " + currentImage.Height + ", " + currentImage.Resolution);
+                        filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
                     }
                     else if (tokens[0] == "EndOfImage")
                     {
@@ -83,11 +91,15 @@ namespace Team_Project
                     {
                         currentMedia = new Media();
 
-                        currentMedia.Title = tokens[0];
-                        currentMedia.Length = double.Parse(tokens[1]);
-                        currentMedia.Rating = tokens[2];
+                        currentMedia.Name = tokens[1];
+                        currentMedia.Type = tokens[2];
+                        currentMedia.Size = decimal.Parse(tokens[3]);
+                        currentMedia.LastModification = int.Parse(tokens[4]);
+                        currentMedia.Title = tokens[5];
+                        currentMedia.Length = double.Parse(tokens[6]);
+                        currentMedia.Rating = tokens[7];
 
-                        filesListBox.Items.Add(currentMedia.Title + ", " + currentMedia.Length + ", " + currentMedia.Rating);
+                        filesListBox.Items.Add(currentMedia.Name + ", " + currentMedia.Type + ", " + currentMedia.Size + ", " + currentMedia.LastModification);
                     }
                     else if (tokens[0] == "EndOfMedia")
                     {
@@ -97,11 +109,15 @@ namespace Team_Project
                     {
                         currentDocument = new Document();
 
-                        currentDocument.NumPages = int.Parse(tokens[1]);
-                        currentDocument.NumWords = int.Parse(tokens[2]);
-                        currentDocument.DocSubject = tokens[3];
+                        currentDocument.Name = tokens[1];
+                        currentDocument.Type = tokens[2];
+                        currentDocument.Size = decimal.Parse(tokens[3]);
+                        currentDocument.LastModification = int.Parse(tokens[4]);
+                        currentDocument.NumPages = int.Parse(tokens[5]);
+                        currentDocument.NumWords = int.Parse(tokens[6]);
+                        currentDocument.DocSubject = tokens[7];
 
-                        filesListBox.Items.Add(currentDocument.NumPages + ", " + currentDocument.NumWords + ", " + currentDocument.DocSubject);
+                        filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
                     }
                     else if (tokens[0] == "EndOfDocument")
                     {
@@ -111,10 +127,14 @@ namespace Team_Project
                     {
                         currentVideo = new Video();
 
-                        currentVideo.Director = tokens[1];
-                        currentVideo.Producer = tokens[2];
+                        currentVideo.Name = tokens[1];
+                        currentVideo.Type = tokens[2];
+                        currentVideo.Size = decimal.Parse(tokens[3]);
+                        currentVideo.LastModification = int.Parse(tokens[4]);
+                        currentVideo.Director = tokens[5];
+                        currentVideo.Producer = tokens[6];
 
-                        filesListBox.Items.Add(currentDocument.NumPages + ", " + currentDocument.NumWords + ", " + currentDocument.DocSubject);
+                        filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
                     }
                     else if (tokens[0] == "EndOfDocument")
                     {

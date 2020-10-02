@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Video
+    class Video : Media
     {
-        public Video()
+        public Video() : base()
         {
             Director = "";
             Producer = "";

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Document
+    class Document : Files
     {
-        public Document()
+        public Document() : base()
         {
             NumPages = 0;
             NumWords = 0;

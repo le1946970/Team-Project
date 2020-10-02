@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Audio
+    class Audio : Media
     {
-        public Audio()
+        public Audio() : base()
         {
             Artist = "";
             BitRate = 0;

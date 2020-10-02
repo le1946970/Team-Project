@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Image
+    class Image : Files
     {
-        public Image()
+        public Image() : base()
         {
             Width = 0;
             Height = 0;
