@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Team_Project
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         List<Audio> audioList = new List<Audio>();
         List<Image> imageList = new List<Image>();
@@ -31,7 +31,7 @@ namespace Team_Project
         int numVideo = 0;
         int numFiles = 0;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -153,7 +153,11 @@ namespace Team_Project
             numFiles = (numAudio + numImage + numMedia + numDocument + numVideo);
             numberFilesTextBox.Text = numFiles.ToString();
 
-            numberFilesTypeListBox.Items.Add(numAudio + "\t" + numImage + "\t" + numMedia + "\t" + numDocument + "\t" + numVideo);
+            numberFilesTypeListBox.Items.Add("Audio: " + numAudio);
+            numberFilesTypeListBox.Items.Add("Image: " + numImage);
+            numberFilesTypeListBox.Items.Add("Media: " + numMedia);
+            numberFilesTypeListBox.Items.Add("Document: " + numDocument);
+            numberFilesTypeListBox.Items.Add("Video: " + numVideo);
         }
     }
 }
