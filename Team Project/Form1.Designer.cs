@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numberFilesTypeListBox = new System.Windows.Forms.ListBox();
             this.filesListBox = new System.Windows.Forms.ListBox();
+            this.moreInfoListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // numberFilesTextBox
@@ -64,7 +65,7 @@
             // 
             this.numberFilesTypeListBox.FormattingEnabled = true;
             this.numberFilesTypeListBox.ItemHeight = 16;
-            this.numberFilesTypeListBox.Location = new System.Drawing.Point(32, 142);
+            this.numberFilesTypeListBox.Location = new System.Drawing.Point(29, 145);
             this.numberFilesTypeListBox.Name = "numberFilesTypeListBox";
             this.numberFilesTypeListBox.Size = new System.Drawing.Size(195, 180);
             this.numberFilesTypeListBox.TabIndex = 5;
@@ -78,11 +79,21 @@
             this.filesListBox.Size = new System.Drawing.Size(333, 292);
             this.filesListBox.TabIndex = 6;
             // 
+            // moreInfoListBox
+            // 
+            this.moreInfoListBox.FormattingEnabled = true;
+            this.moreInfoListBox.ItemHeight = 16;
+            this.moreInfoListBox.Location = new System.Drawing.Point(633, 33);
+            this.moreInfoListBox.Name = "moreInfoListBox";
+            this.moreInfoListBox.Size = new System.Drawing.Size(333, 292);
+            this.moreInfoListBox.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 356);
+            this.ClientSize = new System.Drawing.Size(1002, 356);
+            this.Controls.Add(this.moreInfoListBox);
             this.Controls.Add(this.filesListBox);
             this.Controls.Add(this.numberFilesTypeListBox);
             this.Controls.Add(this.label2);
@@ -102,6 +113,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox numberFilesTypeListBox;
         private System.Windows.Forms.ListBox filesListBox;
+        private System.Windows.Forms.ListBox moreInfoListBox;
     }
 }
 

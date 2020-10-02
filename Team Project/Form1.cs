@@ -24,6 +24,12 @@ namespace Team_Project
         Media currentMedia = new Media();
         Document currentDocument = new Document();
         Video currentVideo = new Video();
+        int numAudio = 0;
+        int numImage = 0;
+        int numMedia = 0;
+        int numDocument = 0;
+        int numVideo = 0;
+        int numFiles = 0;
 
         public Form1()
         {
@@ -63,11 +69,9 @@ namespace Team_Project
                         currentAudio.Artist = tokens[5];
                         currentAudio.BitRate = int.Parse(tokens[6]);
 
-                        filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
-                    }
-                    else if (tokens[0] == "EndOfAudio")
-                    {
+                        numAudio += 1;
                         audioList.Add(currentAudio);
+                        filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
                     }
                     else if (tokens[0] == "Image")
                     {
@@ -81,11 +85,9 @@ namespace Team_Project
                         currentImage.Height = decimal.Parse(tokens[6]);
                         currentImage.Resolution = double.Parse(tokens[7]);
 
-                        filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
-                    }
-                    else if (tokens[0] == "EndOfImage")
-                    {
+                        numImage += 1;
                         imageList.Add(currentImage);
+                        filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
                     }
                     else if (tokens[0] == "Media")
                     {
@@ -99,11 +101,9 @@ namespace Team_Project
                         currentMedia.Length = double.Parse(tokens[6]);
                         currentMedia.Rating = tokens[7];
 
-                        filesListBox.Items.Add(currentMedia.Name + ", " + currentMedia.Type + ", " + currentMedia.Size + ", " + currentMedia.LastModification);
-                    }
-                    else if (tokens[0] == "EndOfMedia")
-                    {
+                        numMedia += 1;
                         mediaList.Add(currentMedia);
+                        filesListBox.Items.Add(currentMedia.Name + ", " + currentMedia.Type + ", " + currentMedia.Size + ", " + currentMedia.LastModification);
                     }
                     else if (tokens[0] == "Document")
                     {
@@ -117,11 +117,9 @@ namespace Team_Project
                         currentDocument.NumWords = int.Parse(tokens[6]);
                         currentDocument.DocSubject = tokens[7];
 
-                        filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
-                    }
-                    else if (tokens[0] == "EndOfDocument")
-                    {
+                        numDocument += 1;
                         documentList.Add(currentDocument);
+                        filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
                     }
                     else if (tokens[0] == "Video")
                     {
@@ -134,11 +132,9 @@ namespace Team_Project
                         currentVideo.Director = tokens[5];
                         currentVideo.Producer = tokens[6];
 
-                        filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
-                    }
-                    else if (tokens[0] == "EndOfDocument")
-                    {
+                        numVideo += 1;
                         videoList.Add(currentVideo);
+                        filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
                     }
                 }
 
@@ -152,7 +148,12 @@ namespace Team_Project
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            ReadFile();
 
+            numFiles = (numAudio + numImage + numMedia + numDocument + numVideo);
+            numberFilesTextBox.Text = numFiles.ToString();
+
+            numberFilesTypeListBox.Items.Add(numAudio + "\t" + numImage + "\t" + numMedia + "\t" + numDocument + "\t" + numVideo);
         }
     }
 }
