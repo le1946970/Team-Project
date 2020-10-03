@@ -132,11 +132,14 @@ namespace Team_Project
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Call the ReadFile method
             ReadFile();
 
+            //Show the number of total files
             numFiles = (numAudio + numImage + numDocument + numVideo);
             numberFilesTextBox.Text = numFiles.ToString();
 
+            //Show the number of files per type in the numberFilesTypeListBox
             numberFilesTypeListBox.Items.Add("Audio: " + numAudio);
             numberFilesTypeListBox.Items.Add("Image: " + numImage);
             numberFilesTypeListBox.Items.Add("Document: " + numDocument);
