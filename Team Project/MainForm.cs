@@ -13,15 +13,19 @@ namespace Team_Project
 {
     public partial class MainForm : Form
     {
+        //  Declare Lists for each of the following: audio, image, document, video
         List<Audio> audioList = new List<Audio>();
         List<Image> imageList = new List<Image>();
         List<Document> documentList = new List<Document>();
         List<Video> videoList = new List<Video>();
 
+        //  Affiliate class with variable
         Audio currentAudio = new Audio();
         Image currentImage = new Image();
         Document currentDocument = new Document();
         Video currentVideo = new Video();
+
+        //  Declare int variables as 0
         int numAudio = 0;
         int numImage = 0;
         int numDocument = 0;
@@ -155,8 +159,7 @@ namespace Team_Project
             //  Call method ReadFile when the form loads
             ReadFile();
 
-
-            //  Field numFIles is equivalent to its many attributes
+            //  Field numFiles is equivalent to its many attributes
             numFiles = (numAudio + numImage + numDocument + numVideo);
             //  Declare TextBox location for the field numFiles
             numberFilesTextBox.Text = numFiles.ToString();

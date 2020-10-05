@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
+    //  Class Media derives from parent class Files
     class Media : Files
     {
         public Media() : base()
         {
+            //  Default value declared as empty strings and 0
             Title = "";
             Length = 0;
             Rating = "";
