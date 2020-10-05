@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Audio.cs" />
     <Compile Include="Document.cs" />
-    <Compile Include="Files.cs" />
+    <Compile Include="GenericFile.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

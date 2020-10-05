@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Media : Files
+    class Media : GenericFile
     {
         public Media() : base()
         {

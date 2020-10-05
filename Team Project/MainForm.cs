@@ -33,6 +33,9 @@ namespace Team_Project
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ReadFile()
         {
             try

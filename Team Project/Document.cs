@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Document : Files
+    class Document : GenericFile
     {
         public Document() : base()
         {

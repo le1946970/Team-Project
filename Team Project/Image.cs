@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Image : Files
+    class Image : GenericFile
     {
         public Image() : base()
         {

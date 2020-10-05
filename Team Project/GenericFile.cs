@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Files
+    class GenericFile
     {
-        public Files()
+        public GenericFile()
         {
             Name = "";
             Type = "";
