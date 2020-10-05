@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
+    //  class Audio derives from parent class Media
     class Audio : Media
     {
         public Audio() : base()
         {
+            //  Default values declared as empty string and 0
             Artist = "";
             BitRate = 0;
         }
