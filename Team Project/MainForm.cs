@@ -173,5 +173,20 @@ namespace Team_Project
             numberFilesTypeListBox.Items.Add("Document: " + numDocument);
             numberFilesTypeListBox.Items.Add("Video: " + numVideo);
         }
+
+        private void ReorganizeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //  if the ComboBox text selected is "File Name" then organize in alphabetical order
+            if (reorganizeComboBox.Text == "File Name")
+            {
+                //  Organize in alphabetical order
+                filesListBox.Sorted = true;
+            }
+            else if (reorganizeComboBox.Text == "File Type")
+            {
+
+            }
+
+        }
     }
 }

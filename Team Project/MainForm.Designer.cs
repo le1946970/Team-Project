@@ -103,6 +103,7 @@
             this.reorganizeComboBox.Name = "reorganizeComboBox";
             this.reorganizeComboBox.Size = new System.Drawing.Size(198, 24);
             this.reorganizeComboBox.TabIndex = 9;
+            this.reorganizeComboBox.SelectedIndexChanged += new System.EventHandler(this.ReorganizeComboBox_SelectedIndexChanged);
             // 
             // moreInfoListBox
             // 
