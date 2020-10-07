@@ -220,12 +220,35 @@ namespace Team_Project
             //  if the ComboBox text selected is "File Name" then organize in alphabetical order
             if (reorganizeComboBox.Text == "File Name")
             {
-                //  Organize in alphabetical order
-                filesListBox.Sorted = true;
+                var qry = from currentFile in fileList
+                          orderby currentFile.Name
+                          select currentFile;
+                filesListBox.Items.Clear();
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
             }
             else if (reorganizeComboBox.Text == "File Type")
             {
-
+                var qry = from currentFile in fileList
+                          orderby currentFile.Type
+                          select currentFile;
+                filesListBox.Items.Clear();
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+            }
+            else if (reorganizeComboBox.Text == "File Size")
+            {
+                var qry = from currentFile in fileList
+                          orderby currentFile.Size
+                          select currentFile;
+                filesListBox.Items.Clear();
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+            }
+            else if (reorganizeComboBox.Text == "Last Modification Date")
+            {
+                var qry = from currentFile in fileList
+                          orderby currentFile.LastModification
+                          select currentFile;
+                filesListBox.Items.Clear();
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
             }
         }
 
