@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Team_Project
 {
     //  class Audio derives from parent class Media
-    class AudioFile : MediaFile
+    class Audio : Media
     {
-        public AudioFile() : base()
+        public Audio() : base()
         {
             //  Default values declared as empty string and 0
             Artist = "";

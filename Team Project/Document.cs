@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    //  class Document derives from parent class Files
-    class DocumentFile : GenericFile
+    class Document : GenericFile
     {
-        //  Default values declared as empty string and 0's
-        public DocumentFile() : base()
+        public Document() : base()
         {
             NumPages = 0;
             NumWords = 0;

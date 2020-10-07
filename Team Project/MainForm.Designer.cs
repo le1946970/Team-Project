@@ -35,6 +35,7 @@
             this.filesListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.reorganizeComboBox = new System.Windows.Forms.ComboBox();
+            this.moreInfoListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // numberFilesTextBox
@@ -80,7 +81,6 @@
             this.filesListBox.Name = "filesListBox";
             this.filesListBox.Size = new System.Drawing.Size(280, 228);
             this.filesListBox.TabIndex = 6;
-            this.filesListBox.SelectedIndexChanged += new System.EventHandler(this.FilesListBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -105,11 +105,21 @@
             this.reorganizeComboBox.TabIndex = 9;
             this.reorganizeComboBox.SelectedIndexChanged += new System.EventHandler(this.ReorganizeComboBox_SelectedIndexChanged);
             // 
+            // moreInfoListBox
+            // 
+            this.moreInfoListBox.FormattingEnabled = true;
+            this.moreInfoListBox.ItemHeight = 16;
+            this.moreInfoListBox.Location = new System.Drawing.Point(567, 21);
+            this.moreInfoListBox.Name = "moreInfoListBox";
+            this.moreInfoListBox.Size = new System.Drawing.Size(280, 228);
+            this.moreInfoListBox.TabIndex = 10;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 269);
+            this.ClientSize = new System.Drawing.Size(869, 269);
+            this.Controls.Add(this.moreInfoListBox);
             this.Controls.Add(this.reorganizeComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.filesListBox);
@@ -133,6 +143,7 @@
         private System.Windows.Forms.ListBox filesListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox reorganizeComboBox;
+        private System.Windows.Forms.ListBox moreInfoListBox;
     }
 }
 
