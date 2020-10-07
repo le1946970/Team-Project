@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Team_Project
 {
-    class Media : GenericFile
+    class MediaFile : GenericFile
     {
-        public Media() : base()
+        public MediaFile() : base()
         {
             Title = "";
             Length = 0;
-            Rating = "";
+            Rating = 0;
         }
         public string Title { get; set; }
         public double Length { get; set; }
-        public string Rating { get; set; }
+        public int Rating { get; set; }
     }
 }

@@ -13,17 +13,17 @@ namespace Team_Project
 {
     public partial class MainForm : Form
     {
+        const int LOWER_RATING = 1;
+        const int UPPER_RATING = 5;
+
         //  Declare Lists for each of the following: audio, image, document, video
-        List<Audio> audioList = new List<Audio>();
-        List<Image> imageList = new List<Image>();
-        List<Document> documentList = new List<Document>();
-        List<Video> videoList = new List<Video>();
+        List<GenericFile> fileList = new List<GenericFile>();
 
         //  Affiliate class with variable
-        Audio currentAudio = new Audio();
-        Image currentImage = new Image();
-        Document currentDocument = new Document();
-        Video currentVideo = new Video();
+        AudioFile currentAudio = new AudioFile();
+        ImageFile currentImage = new ImageFile();
+        DocumentFile currentDocument = new DocumentFile();
+        VideoFile currentVideo = new VideoFile();
 
         //  Declare int variables as 0
         int numAudio = 0;
@@ -62,90 +62,131 @@ namespace Team_Project
                     //Tokenize the line
                     string[] tokens = line.Split(delim);
 
-                    //  Check if the first tokenized string contains "Audio"
-                    if (tokens[0] == "Audio")
-                    {
-                        currentAudio = new Audio();
-
-                        //  Tokenized variables are numbered and parsed
-                        currentAudio.Name = tokens[1];
-                        currentAudio.Type = tokens[2];
-                        currentAudio.Size = tokens[3];
-                        currentAudio.LastModification = int.Parse(tokens[4]);
-                        currentAudio.Artist = tokens[5];
-                        currentAudio.BitRate = int.Parse(tokens[6]);
-
-                        //Add one to the count of the amount of audio files
-                        numAudio += 1;
-                        //  Add field to created list
-                        audioList.Add(currentAudio);
-                        //  Send the following fields to the targeted ListBox
-                        filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
-                    }
                     //  Check if the first tokenized string contains "Media"
-                    else if (tokens[0] == "Media")
+                    if (tokens[0] == "Media")
                     {
-                        //  Check if the first tokenized string contains "Video"
-                        if (tokens[1] == "Video")
+                        //  Check if the first tokenized string contains "Audio"
+                        if (tokens[1] == "Audio")
                         {
-                            currentVideo = new Video();
+                            if (tokens[3] == "MP3" || tokens[3] == "AAC")
+                            {
+                                currentAudio = new AudioFile();
 
-                            //  Tokenized variables are numbered and parsed
-                            currentVideo.Name = tokens[2];
-                            currentVideo.Type = tokens[3];
-                            currentVideo.Size = tokens[4];
-                            currentVideo.LastModification = int.Parse(tokens[5]);
-                            currentVideo.Director = tokens[6];
-                            currentVideo.Producer = tokens[7];
+                                //  Tokenized variables are numbered and parsed
+                                currentAudio.Name = tokens[2];
+                                currentAudio.Type = tokens[3];
+                                currentAudio.Size = tokens[4];
+                                currentAudio.LastModification = int.Parse(tokens[5]);
+                                currentAudio.Title = tokens[6];
+                                currentAudio.Length = int.Parse(tokens[7]);
+                                currentAudio.Rating = int.Parse(tokens[8]);
+                                currentAudio.Artist = tokens[9];
+                                currentAudio.BitRate = int.Parse(tokens[10]);
 
-                            //Add one to the count of the amount of audio files
-                            numVideo += 1;
-                            //  Add field to created list
-                            videoList.Add(currentVideo);
-                            //  Send the following fields to the targeted ListBox
-                            filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
+                                //Add one to the count of the amount of audio files
+                                numAudio += 1;
+                                //  Add field to created list
+                                fileList.Add(currentAudio);
+                                //  Send the following fields to the targeted ListBox
+                                filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
+                            }
+                            else
+                            {
+                                //Display an error message
+                                MessageBox.Show("This Audio type is not supported");
+                            }
                         }
-                        //  Check if the first tokenized string contains "Image"
-                        else if (tokens[1] == "Image")
+                        //  Check if the first tokenized string contains "Video"
+                        else if (tokens[1] == "Video")
                         {
-                            currentImage = new Image();
+                            if  (checkIfIntervalOK(int.Parse(tokens[8]), LOWER_RATING, UPPER_RATING))
+                            {
+                                if (tokens[3] == "MP4" || tokens[3] == "AVI" || tokens[3] == "MKV")
+                                {
+                                    currentVideo = new VideoFile();
+
+                                    //  Tokenized variables are numbered and parsed
+                                    currentVideo.Name = tokens[2];
+                                    currentVideo.Type = tokens[3];
+                                    currentVideo.Size = tokens[4];
+                                    currentVideo.LastModification = int.Parse(tokens[5]);
+                                    currentVideo.Title = tokens[6];
+                                    currentVideo.Length = int.Parse(tokens[7]);
+                                    currentVideo.Rating = int.Parse(tokens[8]);
+                                    currentVideo.Director = tokens[9];
+                                    currentVideo.Producer = tokens[10];
+
+                                    //Add one to the count of the amount of audio files
+                                    numVideo += 1;
+                                    //  Add field to created list
+                                    fileList.Add(currentVideo);
+                                    //  Send the following fields to the targeted ListBox
+                                    filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
+                                }
+                                else
+                                {
+                                    //Display an error message
+                                    MessageBox.Show("This Video type is not supported");
+                                }
+                            }
+                        }
+                    }
+                    //  Check if the first tokenized string contains "Image"
+                    else if (tokens[0] == "Image")
+                    {
+                        if (tokens[2] == "PNG" || tokens[2] == "JPG" || tokens[2] == "BMP")
+                        {
+                            currentImage = new ImageFile();
 
                             //  Tokenized variables are numbered and parsed
-                            currentImage.Name = tokens[2];
-                            currentImage.Type = tokens[3];
-                            currentImage.Size = tokens[4];
-                            currentImage.LastModification = int.Parse(tokens[5]);
-                            currentImage.Width = decimal.Parse(tokens[6]);
-                            currentImage.Height = decimal.Parse(tokens[7]);
-                            currentImage.Resolution = tokens[8];
+                            currentImage.Name = tokens[1];
+                            currentImage.Type = tokens[2];
+                            currentImage.Size = tokens[3];
+                            currentImage.LastModification = int.Parse(tokens[4]);
+                            currentImage.Width = decimal.Parse(tokens[5]);
+                            currentImage.Height = decimal.Parse(tokens[6]);
+                            currentImage.Resolution = tokens[7];
 
                             //Add one to the count of the amount of audio files
                             numImage += 1;
                             //  Add field to created list
-                            imageList.Add(currentImage);
+                            fileList.Add(currentImage);
                             //  Send the following fields to the targeted ListBox
                             filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
+                        }
+                        else
+                        {
+                            //Display an error message
+                            MessageBox.Show("This Image type is not supported");
                         }
                     }
                     //  Check if the first tokenized string contains "Document"
                     else if (tokens[0] == "Document")
                     {
-                        currentDocument = new Document();
+                        if (tokens[2] == "PDF" || tokens[2] == "DOCX" || tokens[2] == "TXT")
+                        {
+                            currentDocument = new DocumentFile();
 
-                        //  Tokenized variables are numbered and parsed
-                        currentDocument.Name = tokens[1];
-                        currentDocument.Type = tokens[2];
-                        currentDocument.Size = tokens[3];
-                        currentDocument.LastModification = int.Parse(tokens[4]);
-                        currentDocument.NumPages = int.Parse(tokens[5]);
-                        currentDocument.NumWords = int.Parse(tokens[6]);
-                        currentDocument.DocSubject = tokens[7];
+                            //  Tokenized variables are numbered and parsed
+                            currentDocument.Name = tokens[1];
+                            currentDocument.Type = tokens[2];
+                            currentDocument.Size = tokens[3];
+                            currentDocument.LastModification = int.Parse(tokens[4]);
+                            currentDocument.NumPages = int.Parse(tokens[5]);
+                            currentDocument.NumWords = int.Parse(tokens[6]);
+                            currentDocument.DocSubject = tokens[7];
 
-                        //Add one to the count of the amount of audio files
-                        numDocument += 1;
-                        //  Add field to created list
-                        documentList.Add(currentDocument);
-                        filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
+                            //Add one to the count of the amount of audio files
+                            numDocument += 1;
+                            //  Add field to created list
+                            fileList.Add(currentDocument);
+                            filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
+                        }
+                        else
+                        {
+                            //Display an error message
+                            MessageBox.Show("This Document type is not supported");
+                        }
                     }
                 }
                 //  Close file
@@ -186,13 +227,84 @@ namespace Team_Project
             {
 
             }
-            else if (reorganizeComboBox.Text == "File Size")
-            {
+        }
 
+        private void FilesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filesListBox.SelectedIndex != -1)
+            {
+                int selected = filesListBox.SelectedIndex;
+                AudioFile anAudioFile;
+                VideoFile aVideoFile;
+                ImageFile anImageFile;
+                DocumentFile aDocumentFile;
+
+                if (fileList[selected] is AudioFile)
+                {
+                    anAudioFile = (AudioFile)fileList[selected];
+                    MessageBox.Show("Title: " + anAudioFile.Title + ", Length: " + anAudioFile.Length + "minutes" + ", Rating: " + anAudioFile.Rating + "Artist: " + anAudioFile.Artist + ", BitRate: " + anAudioFile.BitRate);
+                }
+                else if (fileList[selected] is VideoFile)
+                {
+                    aVideoFile = (VideoFile)fileList[selected];
+                    MessageBox.Show("Title: " + aVideoFile.Title + ", Length: " + aVideoFile.Length + " minutes" + ", Rating: " + aVideoFile.Rating + ", Director: " + aVideoFile.Director + ", Producer: " + aVideoFile.Producer);
+                }
+                else if (fileList[selected] is ImageFile)
+                {
+                    anImageFile = (ImageFile)fileList[selected];
+                    MessageBox.Show("Width: " + anImageFile.Width + ", Height: " + anImageFile.Height + ", Resolution: " + anImageFile.Resolution);
+                }
+                else if (fileList[selected] is DocumentFile)
+                {
+                    aDocumentFile = (DocumentFile)fileList[selected];
+                    MessageBox.Show("Number of pages: " + aDocumentFile.NumPages + ", Number of words: " + aDocumentFile.NumWords + ", Document's subject: " + aDocumentFile.DocSubject);
+                }
             }
-            else if (reorganizeComboBox.Text == "Last Modification Date")
-            {
+        }
+        private bool CheckIfInputOk(string field, string fieldType)
+        {
+            int intVariable;
+            double doubleVariable;
 
+            if (String.IsNullOrEmpty(field))
+            {
+                MessageBox.Show("At least one required field is empty");
+                return false;
+            }
+
+            switch (fieldType)
+            {
+                case "int":  //Checks if the data type is 'int'
+                    if (int.TryParse(field, out intVariable) == false)
+                    {
+                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
+                        return false;
+                    }
+                    break;
+                case "double":  //Checks if the data type is 'double', even though we do not have any double variables
+                    if (double.TryParse(field, out doubleVariable) == false)
+                    {
+                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
+                        return false;
+                    }
+                    break;
+                case "string":
+                    //Nothing to do
+                    break;
+            }
+
+            return true;
+        }
+        private bool checkIfIntervalOK(int value, int lowerLimit, int upperLimit)
+        {
+            if (value <= upperLimit && value >= lowerLimit)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("The rating should be between 1 and 5");
+                return false;
             }
         }
     }
