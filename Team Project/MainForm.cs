@@ -88,7 +88,7 @@ namespace Team_Project
                                 //  Add field to created list
                                 fileList.Add(currentAudio);
                                 //  Send the following fields to the targeted ListBox
-                                filesListBox.Items.Add(currentAudio.Name + ", " + currentAudio.Type + ", " + currentAudio.Size + ", " + currentAudio.LastModification);
+                                filesListBox.Items.Add(currentAudio.Name + "\t" + currentAudio.Type + "\t" + currentAudio.Size + "\t" + currentAudio.LastModification);
                             }
                             else
                             {
@@ -121,7 +121,7 @@ namespace Team_Project
                                     //  Add field to created list
                                     fileList.Add(currentVideo);
                                     //  Send the following fields to the targeted ListBox
-                                    filesListBox.Items.Add(currentVideo.Name + ", " + currentVideo.Type + ", " + currentVideo.Size + ", " + currentVideo.LastModification);
+                                    filesListBox.Items.Add(currentVideo.Name + "\t" + currentVideo.Type + "\t" + currentVideo.Size + "\t" + currentVideo.LastModification);
                                 }
                                 else
                                 {
@@ -152,7 +152,7 @@ namespace Team_Project
                             //  Add field to created list
                             fileList.Add(currentImage);
                             //  Send the following fields to the targeted ListBox
-                            filesListBox.Items.Add(currentImage.Name + ", " + currentImage.Type + ", " + currentImage.Size + ", " + currentImage.LastModification);
+                            filesListBox.Items.Add(currentImage.Name + "\t" + currentImage.Type + "\t" + currentImage.Size + "\t" + currentImage.LastModification);
                         }
                         else
                         {
@@ -180,7 +180,7 @@ namespace Team_Project
                             numDocument += 1;
                             //  Add field to created list
                             fileList.Add(currentDocument);
-                            filesListBox.Items.Add(currentDocument.Name + ", " + currentDocument.Type + ", " + currentDocument.Size + ", " + currentDocument.LastModification);
+                            filesListBox.Items.Add(currentDocument.Name + "\t" + currentDocument.Type + "\t" + currentDocument.Size + "\t" + currentDocument.LastModification);
                         }
                         else
                         {
@@ -260,40 +260,6 @@ namespace Team_Project
                     MessageBox.Show("Number of pages: " + aDocumentFile.NumPages + ", Number of words: " + aDocumentFile.NumWords + ", Document's subject: " + aDocumentFile.DocSubject);
                 }
             }
-        }
-        private bool CheckIfInputOk(string field, string fieldType)
-        {
-            int intVariable;
-            double doubleVariable;
-
-            if (String.IsNullOrEmpty(field))
-            {
-                MessageBox.Show("At least one required field is empty");
-                return false;
-            }
-
-            switch (fieldType)
-            {
-                case "int":  //Checks if the data type is 'int'
-                    if (int.TryParse(field, out intVariable) == false)
-                    {
-                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
-                        return false;
-                    }
-                    break;
-                case "double":  //Checks if the data type is 'double', even though we do not have any double variables
-                    if (double.TryParse(field, out doubleVariable) == false)
-                    {
-                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
-                        return false;
-                    }
-                    break;
-                case "string":
-                    //Nothing to do
-                    break;
-            }
-
-            return true;
         }
         private bool checkIfIntervalOK(int value, int lowerLimit, int upperLimit)
         {

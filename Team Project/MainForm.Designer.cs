@@ -78,7 +78,7 @@
             this.filesListBox.ItemHeight = 16;
             this.filesListBox.Location = new System.Drawing.Point(270, 21);
             this.filesListBox.Name = "filesListBox";
-            this.filesListBox.Size = new System.Drawing.Size(280, 228);
+            this.filesListBox.Size = new System.Drawing.Size(480, 228);
             this.filesListBox.TabIndex = 6;
             this.filesListBox.SelectedIndexChanged += new System.EventHandler(this.FilesListBox_SelectedIndexChanged);
             // 
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 269);
+            this.ClientSize = new System.Drawing.Size(777, 269);
             this.Controls.Add(this.reorganizeComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.filesListBox);
