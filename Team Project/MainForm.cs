@@ -261,40 +261,6 @@ namespace Team_Project
                 }
             }
         }
-        private bool CheckIfInputOk(string field, string fieldType)
-        {
-            int intVariable;
-            double doubleVariable;
-
-            if (String.IsNullOrEmpty(field))
-            {
-                MessageBox.Show("At least one required field is empty");
-                return false;
-            }
-
-            switch (fieldType)
-            {
-                case "int":  //Checks if the data type is 'int'
-                    if (int.TryParse(field, out intVariable) == false)
-                    {
-                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
-                        return false;
-                    }
-                    break;
-                case "double":  //Checks if the data type is 'double', even though we do not have any double variables
-                    if (double.TryParse(field, out doubleVariable) == false)
-                    {
-                        MessageBox.Show("The value: " + field + " must be a(n) " + fieldType + " value");
-                        return false;
-                    }
-                    break;
-                case "string":
-                    //Nothing to do
-                    break;
-            }
-
-            return true;
-        }
         private bool checkIfIntervalOK(int value, int lowerLimit, int upperLimit)
         {
             if (value <= upperLimit && value >= lowerLimit)
