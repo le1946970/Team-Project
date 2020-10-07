@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Team_Project
 {
     //  Class Video derives from parent class Media
-    class Video : Media
+    class VideoFile : MediaFile
     {
-        public Video() : base()
+        public VideoFile() : base()
         {
             //  Declared as empty strings
             Director = "";
