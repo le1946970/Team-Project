@@ -227,6 +227,7 @@ namespace Team_Project
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Name).ToList();
             }
+            //  if the ComboBox text selected is "File Type" then organize in alphabetical order
             else if (reorganizeComboBox.Text == "File Type")
             {
                 var qry = from currentFile in fileList
@@ -236,6 +237,7 @@ namespace Team_Project
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Type).ToList();
             }
+            //  if the ComboBox text selected is "File Size" then organize in numerical order
             else if (reorganizeComboBox.Text == "File Size")
             {
                 var qry = from currentFile in fileList
@@ -245,6 +247,7 @@ namespace Team_Project
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Size).ToList();
             }
+            //  if the ComboBox text selected is "Last Modification Date" then organize in numerical order
             else if (reorganizeComboBox.Text == "Last Modification Date")
             {
                 var qry = from currentFile in fileList
@@ -266,21 +269,25 @@ namespace Team_Project
                 ImageFile anImageFile;
                 DocumentFile aDocumentFile;
 
+                //  Display file info if an audio file is selected
                 if (fileList[selected] is AudioFile)
                 {
                     anAudioFile = (AudioFile)fileList[selected];
                     MessageBox.Show("Title: " + anAudioFile.Title + ", Length: " + anAudioFile.Length + "minutes" + ", Rating: " + anAudioFile.Rating + "Artist: " + anAudioFile.Artist + ", BitRate: " + anAudioFile.BitRate);
                 }
+                //  Display file info if a video file is selected
                 else if (fileList[selected] is VideoFile)
                 {
                     aVideoFile = (VideoFile)fileList[selected];
                     MessageBox.Show("Title: " + aVideoFile.Title + ", Length: " + aVideoFile.Length + " minutes" + ", Rating: " + aVideoFile.Rating + ", Director: " + aVideoFile.Director + ", Producer: " + aVideoFile.Producer);
                 }
+                //  Display file info if an image file is selected
                 else if (fileList[selected] is ImageFile)
                 {
                     anImageFile = (ImageFile)fileList[selected];
                     MessageBox.Show("Width: " + anImageFile.Width + ", Height: " + anImageFile.Height + ", Resolution: " + anImageFile.Resolution);
                 }
+                //  Display file info if a document file is selected
                 else if (fileList[selected] is DocumentFile)
                 {
                     aDocumentFile = (DocumentFile)fileList[selected];
@@ -290,10 +297,12 @@ namespace Team_Project
         }
         private bool checkIfIntervalOK(int value, int lowerLimit, int upperLimit)
         {
+            //  Validation for the upper/lower limit
             if (value <= upperLimit && value >= lowerLimit)
             {
                 return true;
             }
+            //  Return with an error message
             else
             {
                 MessageBox.Show("The rating should be between 1 and 5");
