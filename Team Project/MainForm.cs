@@ -224,7 +224,8 @@ namespace Team_Project
                           orderby currentFile.Name
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                fileList.OrderBy(currentFile => currentFile.Name);
             }
             else if (reorganizeComboBox.Text == "File Type")
             {
@@ -232,7 +233,8 @@ namespace Team_Project
                           orderby currentFile.Type
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "" + currentFile.LastModification));
+                fileList.OrderBy(currentFile => currentFile.Type);
             }
             else if (reorganizeComboBox.Text == "File Size")
             {
@@ -240,7 +242,8 @@ namespace Team_Project
                           orderby currentFile.Size
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                fileList.OrderBy(currentFile => currentFile.Size);
             }
             else if (reorganizeComboBox.Text == "Last Modification Date")
             {
@@ -248,7 +251,8 @@ namespace Team_Project
                           orderby currentFile.LastModification
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + ", " + currentFile.Type + ", " + currentFile.Size + ", " + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                fileList.OrderBy(currentFile => currentFile.LastModification);
             }
         }
 
