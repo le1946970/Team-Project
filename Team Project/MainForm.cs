@@ -75,7 +75,7 @@ namespace Team_Project
                                 //  Tokenized variables are numbered and parsed
                                 currentAudio.Name = tokens[2];
                                 currentAudio.Type = tokens[3];
-                                currentAudio.Size = tokens[4];
+                                currentAudio.Size = decimal.Parse(tokens[4]);
                                 currentAudio.LastModification = int.Parse(tokens[5]);
                                 currentAudio.Title = tokens[6];
                                 currentAudio.Length = int.Parse(tokens[7]);
@@ -88,7 +88,7 @@ namespace Team_Project
                                 //  Add field to created list
                                 fileList.Add(currentAudio);
                                 //  Send the following fields to the targeted ListBox
-                                filesListBox.Items.Add(currentAudio.Name + "\t" + currentAudio.Type + "\t" + currentAudio.Size + "\t" + currentAudio.LastModification);
+                                filesListBox.Items.Add(currentAudio.Name + "\t" + currentAudio.Type + "\t" + currentAudio.Size + " MB" + "\t" + currentAudio.LastModification);
                             }
                             else
                             {
@@ -108,7 +108,7 @@ namespace Team_Project
                                     //  Tokenized variables are numbered and parsed
                                     currentVideo.Name = tokens[2];
                                     currentVideo.Type = tokens[3];
-                                    currentVideo.Size = tokens[4];
+                                    currentVideo.Size = decimal.Parse(tokens[4]);
                                     currentVideo.LastModification = int.Parse(tokens[5]);
                                     currentVideo.Title = tokens[6];
                                     currentVideo.Length = int.Parse(tokens[7]);
@@ -121,7 +121,7 @@ namespace Team_Project
                                     //  Add field to created list
                                     fileList.Add(currentVideo);
                                     //  Send the following fields to the targeted ListBox
-                                    filesListBox.Items.Add(currentVideo.Name + "\t" + currentVideo.Type + "\t" + currentVideo.Size + "\t" + currentVideo.LastModification);
+                                    filesListBox.Items.Add(currentVideo.Name + "\t" + currentVideo.Type + "\t" + currentVideo.Size + " MB" + "\t" + currentVideo.LastModification);
                                 }
                                 else
                                 {
@@ -141,7 +141,7 @@ namespace Team_Project
                             //  Tokenized variables are numbered and parsed
                             currentImage.Name = tokens[1];
                             currentImage.Type = tokens[2];
-                            currentImage.Size = tokens[3];
+                            currentImage.Size = decimal.Parse(tokens[3]);
                             currentImage.LastModification = int.Parse(tokens[4]);
                             currentImage.Width = decimal.Parse(tokens[5]);
                             currentImage.Height = decimal.Parse(tokens[6]);
@@ -152,7 +152,7 @@ namespace Team_Project
                             //  Add field to created list
                             fileList.Add(currentImage);
                             //  Send the following fields to the targeted ListBox
-                            filesListBox.Items.Add(currentImage.Name + "\t" + currentImage.Type + "\t" + currentImage.Size + "\t" + currentImage.LastModification);
+                            filesListBox.Items.Add(currentImage.Name + "\t" + currentImage.Type + "\t" + currentImage.Size + " MB" + "\t" + currentImage.LastModification);
                         }
                         else
                         {
@@ -170,7 +170,7 @@ namespace Team_Project
                             //  Tokenized variables are numbered and parsed
                             currentDocument.Name = tokens[1];
                             currentDocument.Type = tokens[2];
-                            currentDocument.Size = tokens[3];
+                            currentDocument.Size = decimal.Parse(tokens[3]);
                             currentDocument.LastModification = int.Parse(tokens[4]);
                             currentDocument.NumPages = int.Parse(tokens[5]);
                             currentDocument.NumWords = int.Parse(tokens[6]);
@@ -180,7 +180,7 @@ namespace Team_Project
                             numDocument += 1;
                             //  Add field to created list
                             fileList.Add(currentDocument);
-                            filesListBox.Items.Add(currentDocument.Name + "\t" + currentDocument.Type + "\t" + currentDocument.Size + "\t" + currentDocument.LastModification);
+                            filesListBox.Items.Add(currentDocument.Name + "\t" + currentDocument.Type + "\t" + currentDocument.Size + " MB" + "\t" + currentDocument.LastModification);
                         }
                         else
                         {
@@ -224,7 +224,7 @@ namespace Team_Project
                           orderby currentFile.Name
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Name).ToList();
             }
             else if (reorganizeComboBox.Text == "File Type")
@@ -233,7 +233,7 @@ namespace Team_Project
                           orderby currentFile.Type
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "" + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Type).ToList();
             }
             else if (reorganizeComboBox.Text == "File Size")
@@ -242,7 +242,7 @@ namespace Team_Project
                           orderby currentFile.Size
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.Size).ToList();
             }
             else if (reorganizeComboBox.Text == "Last Modification Date")
@@ -251,7 +251,7 @@ namespace Team_Project
                           orderby currentFile.LastModification
                           select currentFile;
                 filesListBox.Items.Clear();
-                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
+                Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + " MB" + "\t" + currentFile.LastModification));
                 fileList = fileList.OrderBy(o => o.LastModification).ToList();
             }
         }

@@ -13,12 +13,12 @@ namespace Team_Project
         {
             Name = "";
             Type = "";
-            Size = "";
+            Size = 0;
             LastModification = 0;
         }
         public string Name { get; set; }
         public string Type { get; set; }
-        public string Size { get; set; }
+        public decimal Size { get; set; }
         public int LastModification { get; set; }
     }
 }
