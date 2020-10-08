@@ -225,7 +225,7 @@ namespace Team_Project
                           select currentFile;
                 filesListBox.Items.Clear();
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
-                fileList.OrderBy(currentFile => currentFile.Name);
+                fileList = fileList.OrderBy(o => o.Name).ToList();
             }
             else if (reorganizeComboBox.Text == "File Type")
             {
@@ -234,7 +234,7 @@ namespace Team_Project
                           select currentFile;
                 filesListBox.Items.Clear();
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "" + currentFile.LastModification));
-                fileList.OrderBy(currentFile => currentFile.Type);
+                fileList = fileList.OrderBy(o => o.Type).ToList();
             }
             else if (reorganizeComboBox.Text == "File Size")
             {
@@ -243,7 +243,7 @@ namespace Team_Project
                           select currentFile;
                 filesListBox.Items.Clear();
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
-                fileList.OrderBy(currentFile => currentFile.Size);
+                fileList = fileList.OrderBy(o => o.Size).ToList();
             }
             else if (reorganizeComboBox.Text == "Last Modification Date")
             {
@@ -252,7 +252,7 @@ namespace Team_Project
                           select currentFile;
                 filesListBox.Items.Clear();
                 Array.ForEach<GenericFile>(qry.ToArray<GenericFile>(), currentFile => filesListBox.Items.Add(currentFile.Name + "\t" + currentFile.Type + "\t" + currentFile.Size + "\t" + currentFile.LastModification));
-                fileList.OrderBy(currentFile => currentFile.LastModification);
+                fileList = fileList.OrderBy(o => o.LastModification).ToList();
             }
         }
 
